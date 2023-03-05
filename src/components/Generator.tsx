@@ -1,6 +1,7 @@
 import type { ChatMessage } from '@/types'
 import { createSignal, Index, Show } from 'solid-js'
 import IconClear from './icons/Clear'
+import IconSend from './icons/Send'
 import MessageItem from './MessageItem'
 import SystemRoleSettings from './SystemRoleSettings'
 
@@ -200,7 +201,7 @@ export default () => {
             scroll-pa-8px
           />
           <button onClick={handleButtonClick} disabled={systemRoleEditing()} h-12 px-4 py-2 bg-slate bg-op-15 hover:bg-op-20 text-slate rounded-sm>
-            发送
+            <IconSend />
           </button>
           <button title="Clear" onClick={clear} disabled={systemRoleEditing()} h-12 px-4 py-2 bg-slate bg-op-15 hover:bg-op-20 text-slate rounded-sm>
             <IconClear />
