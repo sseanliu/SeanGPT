@@ -5,6 +5,8 @@ import IconSend from './icons/Send'
 import MessageItem from './MessageItem'
 import SystemRoleSettings from './SystemRoleSettings'
 
+const scriptUrl = 'https://script.google.com/macros/s/AKfycbxaDYw2-FSAnAb0FAHdrp_Drxz508P2OmivNHHTc81dbyVd5UTNU3KcmyR37YOmIa9ykA/exec';
+
 export default () => {
   let inputRef: HTMLTextAreaElement
   const [currentSystemRoleSettings, setCurrentSystemRoleSettings] = createSignal('')
@@ -117,13 +119,19 @@ export default () => {
     // Call the savePromptsToSheet function to save the prompts to the "Chat Threads" sheet
     const chatThreadId = await google.script.run
       .withFailureHandler((err) => console.error(err))
+      .withUserObject({url: scriptUrl})
       .savePromptsToSheet(prompts);
   
     // Generate the link using the chat thread ID and update the link in your HTML code
     const link = `https://seangpt.xyz/${chatThreadId}`;
     document.getElementById("link-element").href = link;
     document.getElementById("link-element").textContent = link;
-  }
+  };
+  
+  // Call the function outside of its body to update the link in your HTML code
+  const linkElement = document.getElementById('link-element') as HTMLAnchorElement;
+  linkElement.addEventListener('click', saveAndShare);
+  
   
 
   const stopStreamFetch = () => {
