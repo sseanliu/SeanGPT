@@ -5,7 +5,6 @@ import IconSend from './icons/Send'
 import MessageItem from './MessageItem'
 import SystemRoleSettings from './SystemRoleSettings'
 
-const scriptUrl = 'https://script.google.com/macros/s/AKfycbxaDYw2-FSAnAb0FAHdrp_Drxz508P2OmivNHHTc81dbyVd5UTNU3KcmyR37YOmIa9ykA/exec';
 
 export default () => {
   let inputRef: HTMLTextAreaElement
@@ -15,6 +14,8 @@ export default () => {
   const [currentAssistantMessage, setCurrentAssistantMessage] = createSignal('')
   const [loading, setLoading] = createSignal(false)
   const [controller, setController] = createSignal<AbortController>(null)
+
+  const scriptUrl = 'https://script.google.com/macros/s/AKfycbxaDYw2-FSAnAb0FAHdrp_Drxz508P2OmivNHHTc81dbyVd5UTNU3KcmyR37YOmIa9ykA/exec';
 
   const handleButtonClick = async () => {
     const inputValue = inputRef.value
