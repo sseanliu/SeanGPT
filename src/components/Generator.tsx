@@ -5,7 +5,6 @@ import IconSend from './icons/Send'
 import MessageItem from './MessageItem'
 import SystemRoleSettings from './SystemRoleSettings'
 
-
 export default () => {
   let inputRef: HTMLTextAreaElement
   const [currentSystemRoleSettings, setCurrentSystemRoleSettings] = createSignal('')
@@ -14,8 +13,6 @@ export default () => {
   const [currentAssistantMessage, setCurrentAssistantMessage] = createSignal('')
   const [loading, setLoading] = createSignal(false)
   const [controller, setController] = createSignal<AbortController>(null)
-
-  const scriptUrl = 'https://script.google.com/macros/s/AKfycbxaDYw2-FSAnAb0FAHdrp_Drxz508P2OmivNHHTc81dbyVd5UTNU3KcmyR37YOmIa9ykA/exec';
 
   const handleButtonClick = async () => {
     const inputValue = inputRef.value
@@ -112,28 +109,6 @@ export default () => {
     setCurrentAssistantMessage('')
     setCurrentSystemRoleSettings('')
   }
-  
-  const saveAndShare = async () => {
-    // Get the prompts that User A entered
-    const prompts = messageList().filter(m => m.role === 'user').map(m => m.content);
-  
-    // Call the savePromptsToSheet function to save the prompts to the "Chat Threads" sheet
-    const chatThreadId = await google.script.run
-      .withFailureHandler((err) => console.error(err))
-      .withUserObject({url: scriptUrl})
-      .savePromptsToSheet(prompts);
-  
-    // Generate the link using the chat thread ID and update the link in your HTML code
-    const link = `https://seangpt.xyz/${chatThreadId}`;
-    document.getElementById("link-element").href = link;
-    document.getElementById("link-element").textContent = link;
-  };
-  
-  // Call the function outside of its body to update the link in your HTML code
-  const linkElement = document.getElementById('link-element') as HTMLAnchorElement;
-  linkElement.addEventListener('click', saveAndShare);
-  
-  
 
   const stopStreamFetch = () => {
     if (controller()) {
@@ -228,7 +203,7 @@ export default () => {
           <button onClick={handleButtonClick} disabled={systemRoleEditing()} h-12 px-4 py-2 bg-slate bg-op-15 hover:bg-op-20 text-slate rounded-sm>
             <IconSend />
           </button>
-          <button title="Clear" onClick={saveAndShare} disabled={systemRoleEditing()} h-12 px-4 py-2 bg-slate bg-op-15 hover:bg-op-20 text-slate rounded-sm>
+          <button title="Clear" onClick={clear} disabled={systemRoleEditing()} h-12 px-4 py-2 bg-slate bg-op-15 hover:bg-op-20 text-slate rounded-sm>
             <IconClear />
           </button>
         </div>
