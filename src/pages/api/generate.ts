@@ -25,4 +25,5 @@ export const post: APIRoute = async (context) => {
   const response = await fetch('https://api.openai.com/v1/chat/completions', initOptions) as Response
 
   return new Response(parseOpenAIStream(response))
+  
 }
