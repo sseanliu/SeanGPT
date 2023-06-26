@@ -4,7 +4,7 @@ import { generatePayload, parseOpenAIStream } from '@/utils/openAI'
 import { fetch, ProxyAgent } from 'undici'
 // #vercel-end
 
-const apiKey = import.meta.env.OPENAI_API_KEY
+const apiKey = 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
 const https_proxy = import.meta.env.HTTPS_PROXY
 
 export const post: APIRoute = async (context) => {
@@ -25,5 +25,5 @@ export const post: APIRoute = async (context) => {
   const response = await fetch('https://api.openai.com/v1/chat/completions', initOptions) as Response
 
   return new Response(parseOpenAIStream(response))
-  
+
 }
