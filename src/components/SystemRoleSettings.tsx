@@ -49,7 +49,7 @@ export default (props: Props) => {
           <div>
             <textarea
               ref={systemInputRef!}
-              placeholder="你是一个耐心的私人健身教练/英语老师/咨询顾问，我希望你能够..."
+              placeholder="You are a patient personal fitness trainer/English teacher/consultant and I want you to be able to..."
               autocomplete="off"
               autofocus
               rows="3"
