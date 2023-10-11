@@ -45,7 +45,7 @@ export default (props: Props) => {
             <IconEnv />
             <span>system prompt</span>
           </div>
-          <p class="my-2 leading-normal text-slate text-sm op-60">在这里以自然的语言指导AI助手，定Here the AI assistant is instructed in natural language to customize the assistant's behavior.制助手的行为。</p>
+          <p class="my-2 leading-normal text-slate text-sm op-60">Here the AI assistant is instructed in natural language to customize the assistant's behavior.</p>
           <div>
             <textarea
               ref={systemInputRef!}
