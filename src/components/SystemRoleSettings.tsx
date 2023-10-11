@@ -43,9 +43,9 @@ export default (props: Props) => {
         <div>
           <div class="flex items-center gap-1 op-60 text-slate">
             <IconEnv />
-            <span>指导语:</span>
+            <span>system prompt</span>
           </div>
-          <p class="my-2 leading-normal text-slate text-sm op-60">在这里以自然的语言指导AI助手，定制助手的行为。</p>
+          <p class="my-2 leading-normal text-slate text-sm op-60">在这里以自然的语言指导AI助手，定Here the AI assistant is instructed in natural language to customize the assistant's behavior.制助手的行为。</p>
           <div>
             <textarea
               ref={systemInputRef!}
@@ -71,7 +71,7 @@ export default (props: Props) => {
             />
           </div>
           <button onClick={handleButtonClick} h-12 px-4 py-2 bg-slate bg-op-15 hover:bg-op-20 text-slate rounded-sm>
-            保存
+            Save
           </button>
         </div>
       </Show>
